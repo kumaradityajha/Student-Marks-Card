@@ -48,6 +48,24 @@ public class StudentDAO
 	}
 		
 	}
+
+
+	public List<Students> fetchByMobile(long mobile)
+	{
+		 List<Students> list = students_repository.findByMobile(mobile);
+		 
+		 if (list.isEmpty())
+		 {
+			 return null;
+			
+		}
+		 else 
+		 {
+			 return list;
+			
+		}
+		
+	}
 	
 
 }

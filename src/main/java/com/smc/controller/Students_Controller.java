@@ -54,5 +54,17 @@ public class Students_Controller
 		
 	}
 	
+	@GetMapping("student/mobiluu/{mobile}")
+	@ResponseBody
+	public Response_Structure<List<Students>> fetchByMobile(@PathVariable long mobile)
+	{
+		Response_Structure<List<Students>> response_Structure = student_service.fetchByMobile(mobile);
+		
+		return response_Structure;
+		
+		
+		
+	}
+	
 
 }

@@ -136,4 +136,29 @@ public class Student_service
 		
 		return response_Structure;
 	}
+
+	public Response_Structure fetchByMobile(long mobile)
+	{
+		List<Students> list = studentDAO.fetchByMobile(mobile);
+		
+		Response_Structure <List<Students>> response_Structure = new Response_Structure();
+		
+		if (list==null)
+		{
+			response_Structure.setMsg("Data Not Found");
+			 response_Structure.setStatus_code(HttpStatus.NOT_FOUND.value());
+			 response_Structure.setData(null);
+				
+		}
+		else
+		{
+			response_Structure.setMsg("Data  Found");
+			 response_Structure.setStatus_code(HttpStatus.FOUND.value());
+			 response_Structure.setData(list);
+			
+			
+		}
+		
+		return response_Structure;
+	}
 }
