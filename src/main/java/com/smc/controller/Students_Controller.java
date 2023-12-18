@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.smc.DTO.Students;
 import com.smc.helper.Response_Structure;
 import com.smc.service.Student_service;
 
-@Controller
-
+@RestController
 public class Students_Controller
 {
 	@Autowired
@@ -66,5 +66,27 @@ public class Students_Controller
 		
 	}
 	
+	@GetMapping("student/aboveninty")
+	@ResponseBody
+	public Response_Structure<List<Students>> marksAboveNinty()
+	{
+		return student_service.marksAboveNinty();
+		
+		
+	}
+	
+	@GetMapping("student/NameWithPercentage/{percentage}/{name}")
+	public Response_Structure<List<Students>> fetchByNameAndAboveNinty(@PathVariable String name, @PathVariable double percentage) {
+
+		return student_service.fetchByNameAndPercentage(name, percentage);
+
+	}
+	
+	@GetMapping("getallstudent")
+	public Response_Structure<List<Students>> fetchAll() 
+	{
+	  return student_service.fetchAll();
+		
+	}
 
 }

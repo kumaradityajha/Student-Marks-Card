@@ -161,4 +161,86 @@ public class Student_service
 		
 		return response_Structure;
 	}
+
+	public Response_Structure<List<Students>> marksAboveNinty() {
+		
+		List<Students> list = studentDAO.marksAboveNinty();
+		
+		
+     Response_Structure <List<Students>> response_Structure = new Response_Structure();
+		
+		if (list==null)
+		{
+			response_Structure.setMsg("Data Not Found");
+			 response_Structure.setStatus_code(HttpStatus.NOT_FOUND.value());
+			 response_Structure.setData(null);
+				
+		}
+		else
+		{
+			response_Structure.setMsg("Data  Found");
+			 response_Structure.setStatus_code(HttpStatus.FOUND.value());
+			 response_Structure.setData(list);
+			
+			
+		}
+		
+		return response_Structure;
+		
+		
+	}
+	
+	public Response_Structure<List<Students>> fetchByNameAndPercentage(String name, double percentage) {
+		// TODO Auto-generated method stub
+		List<Students> students = studentDAO.fetchByNameAndPercentage(name, percentage);
+
+		Response_Structure<List<Students>> responseStructure = new Response_Structure<List<Students>>();
+
+		if (students == null) {
+
+			responseStructure.setMsg("Data Not Found");
+
+			responseStructure.setStatus_code(HttpStatus.NOT_FOUND.value());
+
+			responseStructure.setData(null);
+
+		} else {
+
+			responseStructure.setMsg("Data Found");
+
+			responseStructure.setStatus_code(HttpStatus.FOUND.value());
+
+			responseStructure.setData(students);
+
+		}
+		return responseStructure;
+	}
+
+	public Response_Structure<List<Students>> fetchAll()
+	{
+		List<Students> students = studentDAO.fetchAll();
+		
+		Response_Structure<List<Students>> responseStructure = new Response_Structure<List<Students>>();
+
+		if (students == null) {
+
+			responseStructure.setMsg("Data Not Found");
+
+			responseStructure.setStatus_code(HttpStatus.NOT_FOUND.value());
+
+			responseStructure.setData(null);
+
+		} else {
+
+			responseStructure.setMsg("Data Found");
+
+			responseStructure.setStatus_code(HttpStatus.FOUND.value());
+
+			responseStructure.setData(students);
+
+		}
+		return responseStructure;
+		
+		
+	}
 }

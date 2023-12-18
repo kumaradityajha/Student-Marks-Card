@@ -66,6 +66,38 @@ public class StudentDAO
 		}
 		
 	}
+
+
+	public List<Students> marksAboveNinty() {
+		
+	return	students_repository.findAboveNinty();
 	
 
+}
+	
+	public List<Students> fetchByNameAndPercentage(String name, double percentage) {
+
+		return students_repository.findByNameAndPercentage(name,percentage);
+	}
+
+
+	public List<Students> fetchAll()
+	{
+		 List<Students> list = students_repository.findAll();
+		 
+ 
+		 
+		 if (list.isEmpty())
+		 {
+			 return null;
+			
+		}
+		 else 
+		 {
+			 return list;
+			
+		}
+		
+		
+	}
 }
